@@ -34,3 +34,6 @@ meta <- meta[cellIDs,]
 head(meta)
 sceset <- SingleCellExperiment(assays = list(logcounts = as.matrix(df)), metadata = meta)
 sceset
+# Tell sceset where to look for spike-ins
+isSpike(sceset, "ERCC") <- grepl("ERCC", rownames(sceset))
+sceset
